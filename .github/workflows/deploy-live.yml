@@ -63,13 +63,13 @@ jobs:
             --exclude-glob node_modules/ \
             --exclude-glob '*.zip' \
             --exclude-glob '.DS_Store' \
-            app/public/wp-content/themes/anoumon /anoumon/wp-content/themes/anoumon
+            app/public/wp-content/themes/anoumon /public_html/wp-content/themes/anoumon
           mirror -R --delete --verbose \
             --exclude-glob .git/ \
             --exclude-glob '.DS_Store' \
-            app/public/wp-content/fonts /anoumon/wp-content/fonts
+            app/public/wp-content/fonts /public_html/wp-content/fonts
           mirror -R --delete --verbose \
             --exclude-glob .git/ \
             --exclude-glob '.DS_Store' \
-            app/public/wp-content/plugins/anoumon-core /anoumon/wp-content/plugins/anoumon-core
+            app/public/wp-content/plugins/anoumon-core /public_html/wp-content/plugins/anoumon-core
           LFTP
