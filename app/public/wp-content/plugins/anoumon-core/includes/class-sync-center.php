@@ -147,8 +147,9 @@ class Anoumon_Sync_Center
         $target_last_applied = (string) get_option(self::OPTION_LAST_APPLIED, '');
         $newest_wins = $this->build_newest_wins($bundle_generated, $target_last_applied);
         $plan = array(
-            'options'       => count((array) ($bundle['options'] ?? array())),
-            'site_settings' => !empty($bundle['site_settings']) ? 1 : 0,
+            'options'        => count((array) ($bundle['options'] ?? array())),
+            'site_settings'  => !empty($bundle['site_settings']) ? 1 : 0,
+            'sql_statements' => count((array) ($bundle['sql_statements'] ?? array())),
         );
 
         if (!$apply) {
@@ -425,7 +426,7 @@ class Anoumon_Sync_Center
 
     private function apply_bundle(array $bundle)
     {
-        $changes = array('options' => array(), 'site_settings' => array());
+        $changes = array('options' => array(), 'site_settings' => array(), 'sql' => array());
 
         foreach ((array) ($bundle['options'] ?? array()) as $option_name => $option_value) {
             if ($this->option_is_sensitive((string) $option_name)) {
@@ -437,6 +438,10 @@ class Anoumon_Sync_Center
 
         if (!empty($bundle['site_settings']) && is_array($bundle['site_settings'])) {
             $changes['site_settings'] = $this->apply_site_settings((array) $bundle['site_settings']);
+        }
+
+        if (!empty($bundle['sql_statements']) && is_array($bundle['sql_statements'])) {
+            $changes['sql'] = $this->apply_sql_statements((array) $bundle['sql_statements']);
         }
 
         return $changes;
@@ -513,6 +518,35 @@ class Anoumon_Sync_Center
         }
 
         return array_merge($results, $this->clear_caches());
+    }
+
+    private function apply_sql_statements(array $statements)
+    {
+        global $wpdb;
+
+        $wpdb->query('SET NAMES utf8mb4');
+        $wpdb->query("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
+
+        $ran   = 0;
+        $errors = array();
+        foreach ($statements as $i => $sql) {
+            $sql = trim((string) $sql);
+            if ('' === $sql || str_starts_with($sql, '--')) {
+                continue;
+            }
+            $result = $wpdb->query($sql);
+            if (false === $result) {
+                $errors[] = sprintf('Statement %d: %s', $i + 1, $wpdb->last_error);
+            } else {
+                $ran++;
+            }
+        }
+
+        if (!empty($errors)) {
+            throw new \RuntimeException('SQL-fout(en): ' . implode('; ', $errors));
+        }
+
+        return array('ran' => $ran);
     }
 
     private function clear_caches()

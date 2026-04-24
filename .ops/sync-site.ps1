@@ -5,6 +5,7 @@ param(
     [string]$AppUser      = "",
     [string]$AppPassword  = "",
     [string]$ConfigPath   = "",
+    [string]$SqlFile      = "",
     [switch]$Apply,
     [switch]$ExportOnly
 )
@@ -74,7 +75,23 @@ if ($AppUser -eq '' -or $AppPassword -eq '') {
     return
 }
 
-$bundleJson = Get-Content -LiteralPath $BundlePath -Raw -Encoding UTF8
+$bundle = Get-Content -LiteralPath $BundlePath -Raw -Encoding UTF8 | ConvertFrom-Json -AsHashtable
+
+# SQL-statements uit bestand injecteren in de bundle
+if ($SqlFile -ne '') {
+    if (-not (Test-Path -LiteralPath $SqlFile)) {
+        Write-Error "SQL-bestand niet gevonden: $SqlFile"
+        return
+    }
+    $raw = Get-Content -LiteralPath $SqlFile -Raw -Encoding UTF8
+    $statements = $raw -split ';\s*\r?\n' |
+        ForEach-Object { $_.Trim() } |
+        Where-Object { $_ -ne '' -and -not $_.StartsWith('--') -and -not $_.StartsWith('SET NAMES') -and -not $_.StartsWith('SET SESSION') }
+    $bundle['sql_statements'] = @($statements)
+    Write-Host "SQL-bestand: $SqlFile ($($statements.Count) statements toegevoegd aan bundle)"
+}
+
+$bundleJson = $bundle | ConvertTo-Json -Depth 20 -Compress
 $base64Cred = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${AppUser}:${AppPassword}"))
 
 if ($Apply) {
