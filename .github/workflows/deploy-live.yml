@@ -30,8 +30,10 @@ jobs:
 
       - name: Lint theme PHP
         run: |
-          find app/public/wp-content/themes/anoumon -type f -name "*.php" -print0 | while IFS= read -r -d '' file; do
-            php -l "$file"
+          for dir in app/public/wp-content/themes/anoumon app/public/wp-content/themes/flatsome-child; do
+            find "$dir" -type f -name "*.php" -print0 | while IFS= read -r -d '' file; do
+              php -l "$file"
+            done
           done
 
       - name: Lint plugin PHP
@@ -66,8 +68,10 @@ jobs:
             app/public/wp-content/themes/anoumon /public_html/wp-content/themes/anoumon
           mirror -R --delete --verbose \
             --exclude-glob .git/ \
+            --exclude-glob node_modules/ \
+            --exclude-glob '*.zip' \
             --exclude-glob '.DS_Store' \
-            app/public/wp-content/fonts /public_html/wp-content/fonts
+            app/public/wp-content/themes/flatsome-child /public_html/wp-content/themes/flatsome-child
           mirror -R --delete --verbose \
             --exclude-glob .git/ \
             --exclude-glob '.DS_Store' \
