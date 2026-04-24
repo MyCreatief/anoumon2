@@ -251,3 +251,64 @@ add_action( 'wp_head', function () {
         . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
         . '</script>' . "\n";
 } );
+
+// BlogPosting schema voor blogberichten
+add_action( 'wp_head', function () {
+    if ( ! is_singular( 'post' ) ) return;
+
+    $post  = get_queried_object();
+    $image = get_the_post_thumbnail_url( $post, 'large' );
+
+    $schema = [
+        '@context'      => 'https://schema.org',
+        '@type'         => 'BlogPosting',
+        'headline'      => get_the_title( $post ),
+        'description'   => get_the_excerpt( $post ),
+        'datePublished' => get_the_date( 'c', $post ),
+        'dateModified'  => get_the_modified_date( 'c', $post ),
+        'url'           => get_permalink( $post ),
+        'inLanguage'    => 'nl-NL',
+        'author'        => [
+            '@type' => 'Person',
+            'name'  => 'Ánoumon',
+            'url'   => 'https://anoumon.nl/',
+        ],
+        'publisher' => [ '@id' => 'https://anoumon.nl/#business' ],
+        'isPartOf'  => [ '@id' => 'https://anoumon.nl/#website' ],
+    ];
+    if ( $image ) {
+        $schema['image'] = $image;
+    }
+
+    echo '<script type="application/ld+json">'
+        . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+        . '</script>' . "\n";
+} );
+
+// BreadcrumbList schema voor binnenste pagina's
+add_action( 'wp_head', function () {
+    if ( is_front_page() || is_home() ) return;
+
+    $items = [
+        [ '@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => home_url( '/' ) ],
+    ];
+
+    if ( is_singular() ) {
+        $items[] = [
+            '@type'    => 'ListItem',
+            'position' => 2,
+            'name'     => get_the_title(),
+            'item'     => get_permalink(),
+        ];
+    }
+
+    $schema = [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => $items,
+    ];
+
+    echo '<script type="application/ld+json">'
+        . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+        . '</script>' . "\n";
+} );
