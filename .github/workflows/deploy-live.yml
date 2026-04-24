@@ -34,12 +34,18 @@ jobs:
             php -l "$file"
           done
 
+      - name: Lint plugin PHP
+        run: |
+          find app/public/wp-content/plugins/anoumon-core -type f -name "*.php" -print0 | while IFS= read -r -d '' file; do
+            php -l "$file"
+          done
+
       - name: Install deploy tooling
         run: |
           sudo apt-get update
           sudo apt-get install -y lftp
 
-      - name: Deploy theme and fonts via SFTP
+      - name: Deploy theme, fonts and plugin via SFTP
         env:
           LIVE_SFTP_HOST: ${{ secrets.LIVE_SFTP_HOST }}
           LIVE_SFTP_PORT: ${{ secrets.LIVE_SFTP_PORT }}
@@ -62,4 +68,8 @@ jobs:
             --exclude-glob .git/ \
             --exclude-glob '.DS_Store' \
             app/public/wp-content/fonts /anoumon/wp-content/fonts
+          mirror -R --delete --verbose \
+            --exclude-glob .git/ \
+            --exclude-glob '.DS_Store' \
+            app/public/wp-content/plugins/anoumon-core /anoumon/wp-content/plugins/anoumon-core
           LFTP

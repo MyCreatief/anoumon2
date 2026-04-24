@@ -11,6 +11,8 @@ app/public/wp-includes/
 app/public/wp-content/index.php
 app/public/wp-content/languages/
 app/public/wp-content/plugins/*
+!app/public/wp-content/plugins/anoumon-core/
+!app/public/wp-content/plugins/anoumon-core/**
 app/public/wp-content/themes/*
 !app/public/wp-content/themes/anoumon/
 !app/public/wp-content/themes/anoumon/**
