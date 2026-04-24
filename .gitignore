@@ -32,6 +32,10 @@ app/public/wp-content/cache/
 logs/
 *.log
 
+# Ops — credentials en gegenereerde bundles nooit committen
+.ops/sync-remote.json
+.ops/sync-bundle.latest.json
+
 # Database / temp
 *.sql
 *.bak
