@@ -16,6 +16,8 @@ app/public/wp-content/plugins/*
 app/public/wp-content/themes/*
 !app/public/wp-content/themes/anoumon/
 !app/public/wp-content/themes/anoumon/**
+!app/public/wp-content/themes/flatsome-child/
+!app/public/wp-content/themes/flatsome-child/**
 conf/
 
 # Uploads and cache
