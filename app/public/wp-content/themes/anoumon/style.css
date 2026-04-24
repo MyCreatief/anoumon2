@@ -1,0 +1,390 @@
+@charset "UTF-8";
+/*
+Theme Name: Anoumon
+Theme URI: https://wordpress.org/themes/twentytwentythree
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Twenty Twenty-Three is designed to take advantage of the new design tools introduced in WordPress 6.1. With a clean, blank base as a starting point, this default theme includes ten diverse style variations created by members of the WordPress community. Whether you want to build a complex or incredibly simple website, you can do it quickly and intuitively through the bundled styles or dive into creation and full customization yourself.
+Requires at least: 6.1
+Tested up to: 6.1
+Requires PHP: 5.6
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Text Domain: anoumon
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, accessibility-ready, blog, portfolio, news
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Libre+Baskerville:ital@0;1&display=swap");
+* {
+  box-sizing: border-box; }
+
+@font-face {
+  font-family: BDS;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/BDScript-Regular.woff) format("woff"); }
+
+@font-face {
+  font-family: BDS2;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/BDSans-Regular.woff) format("woff"); }
+
+@font-face {
+  font-family: IcoFont;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/icofont.woff) format("woff"); }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.eot?eiifs0");
+  src: url("https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.eot?eiifs0#iefix") format("embedded-opentype"), url("https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.ttf?eiifs0") format("truetype"), url("https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.woff?eiifs0") format("woff"), url("https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.svg?eiifs0#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-caret-down:before {
+  content: "\e900"; }
+
+.featured-image-section {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin-bottom: 15px;
+  height: 650px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center; }
+
+.featured-image {
+  position: relative;
+  height: 100%;
+  background-size: cover;
+  background-position: center; }
+
+.featured-image .image-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  font-weight: bold;
+  text-shadow: 2px 1px 4px #000000;
+  font-size: 35px;
+  text-align: center;
+  width: 80%;
+  max-width: 1000px;
+  z-index: 2;
+  color: #ffffff;
+  font-family: 'Libre Baskerville', sans-serif;
+  margin: 0; }
+  @media only screen and (min-width: 1000px) {
+    .featured-image .image-title {
+      top: 33%;
+      transform: translate(-50%, -33%); } }
+  @media only screen and (min-width: 1000px) {
+    .featured-image .image-title {
+      font-size: 55px; } }
+
+.wave {
+  height: 100%;
+  background-image: url("./images/wave.webp");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover; }
+
+.filler {
+  background: #fff;
+  padding-left: 5vw;
+  display: inline-flex;
+  align-items: center; }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-position: right -114px;
+  background-size: 280px;
+  background-repeat: no-repeat;
+  align-items: center;
+  height: 100%; }
+  nav ul {
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 15px; }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    transition: all 1s;
+    padding: 0.3125rem 0.9375rem;
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 0.1875rem solid transparent;
+    height: 100%;
+    color: #747474; }
+    nav a:hover {
+      border-bottom: 0.1875rem solid #220076;
+      background-color: rgba(255, 255, 255, 0.4); }
+
+.menu-toggle {
+  display: none; }
+
+@media screen and (max-width: 767px) {
+  .menu-toggle-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    margin-bottom: 4px; }
+  .navigation-menu {
+    display: none; }
+  .navigation-menu.open {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    background: #ffffff;
+    padding: 15px; }
+    .navigation-menu.open li {
+      padding: 0 0 15px; }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none; }
+  .menu-toggle:focus {
+    outline: none; } }
+
+.menu-item-has-children {
+  position: relative; }
+  .menu-item-has-children > a:after {
+    font-family: 'icomoon';
+    content: "\e900";
+    display: inline-flex;
+    position: relative;
+    margin-left: 10px; }
+  .menu-item-has-children:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    background-color: #ffffff;
+    top: 100%; }
+
+.sub-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 270px; }
+  .sub-menu li {
+    padding: 0 0 15px; }
+
+div .menu-item-has-children > a::after {
+  content: "⌄";
+  display: inline-flex;
+  width: 3px;
+  height: 3px; }
+
+form h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px !important; }
+
+::placeholder {
+  color: #747474 !important;
+  opacity: 0.5;
+  font-size: 12px !important; }
+
+textarea {
+  font-family: 'Lato', sans-serif !important; }
+
+.is-layout-flow {
+  margin-bottom: 30px !important; }
+
+* {
+  box-sizing: border-box; }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: #747474;
+  font-family: 'Lato', sans-serif; }
+
+html {
+  background-size: 50%;
+  min-height: 100vh; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400; }
+
+h2 {
+  text-align: center;
+  font-size: 1.5625rem;
+  font-weight: 400; }
+  @media only screen and (min-width: 1000px) {
+    h2 {
+      font-size: 3.875rem; } }
+
+h5 {
+  font-size: 1.625rem;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  color: #b9afa1; }
+
+h6 {
+  font-size: 18px; }
+
+main {
+  width: 100%;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto auto 46px;
+  grid-template-columns: auto auto auto;
+  padding: 17px 0 0 0; }
+  @media only screen and (min-width: 1000px) {
+    main {
+      grid-template-columns: auto 1170px auto; } }
+
+header {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 15px;
+  width: 100%;
+  background-color: #fff;
+  border-image-slice: 1;
+  box-shadow: 0 10px 50px -2px black;
+  position: fixed;
+  top: 0;
+  z-index: 99; }
+
+app-header {
+  display: grid;
+  grid-template-columns: 50% 50%; }
+
+footer {
+  background-color: #0c0c0c;
+  color: #fff;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  align-items: center;
+  text-align: center; }
+  footer a {
+    color: #fff; }
+
+.content {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding: 0 30px 0; }
+  @media only screen and (min-width: 1000px) {
+    .content {
+      padding: 0 1.875rem 0; } }
+
+.divider {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 auto;
+  display: block;
+  color: #b9afa1; }
+  @media only screen and (min-width: 1000px) {
+    .divider {
+      font-size: 2.125rem; } }
+
+.title-divider {
+  margin-top: 30px;
+  color: #fff;
+  background-image: url("./images/bg-titles.jpg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  padding: 30px 0;
+  margin-bottom: 60px; }
+
+.fusion-fullwidth {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: #f9f9f9;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-width: 0px 0px 0px 0px;
+  border-color: #eae9e9;
+  border-style: solid; }
+
+.fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth, .fusion-section-separator .fusion-section-separator-svg.fusion-section-separator-fullwidth {
+  width: 100%; }
+
+.fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth {
+  position: relative; }
+
+.ltr .fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth, .ltr .fusion-section-separator .fusion-section-separator-svg.fusion-section-separator-fullwidth {
+  left: 50%;
+  transform: translateX(-50%); }
+
+.blocks {
+  display: flex;
+  justify-items: center;
+  grid-template-columns: 100%;
+  padding: 0;
+  margin: 0; }
+  .blocks ul {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: flex-start;
+    grid-template-columns: auto;
+    flex-direction: column; }
+    @media only screen and (min-width: 1000px) {
+      .blocks ul {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: auto auto auto auto auto; } }
+    .blocks ul li {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center; }
+  .blocks h6 {
+    margin-top: 15px;
+    font-weight: 400; }
+  .blocks li {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 4px 0;
+    border: 2px solid #fff;
+    border-right: 0;
+    font-size: 18px;
+    text-align: center; }
+    .blocks li span, .blocks li svg {
+      font-size: 88px;
+      color: #b9afa1; }
+      .blocks li span:before, .blocks li svg:before {
+        display: grid;
+        color: #b9afa1;
+        justify-items: center;
+        align-items: end; }
+    .blocks li:first-child {
+      border-left: 0; }

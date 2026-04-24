@@ -1,0 +1,55 @@
+//@import url('https://fonts.googleapis.com/css2?family=Lato&family=Libre+Baskerville&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat&family=Open+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Libre+Baskerville:ital@0;1&display=swap');
+
+@font-face {
+  font-family: BDS;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/BDScript-Regular.woff) format("woff")
+}
+
+@font-face {
+  font-family: BDS2;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/BDSans-Regular.woff) format("woff")
+}
+
+@font-face {
+  font-family: IcoFont;
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://anoumon.nl/wp-content/themes/anoumon/fonts/icofont.woff) format("woff")
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.eot?eiifs0');
+  src: url('https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.eot?eiifs0#iefix') format('embedded-opentype'),
+  url('https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.ttf?eiifs0') format('truetype'),
+  url('https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.woff?eiifs0') format('woff'),
+  url('https://anoumon.nl/wp-content/themes/anoumon/fonts/icomoon/fonts/icomoon.svg?eiifs0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-caret-down:before {
+  content: "\e900";
+}

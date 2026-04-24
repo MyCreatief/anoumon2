@@ -1,0 +1,138 @@
+@import "functions";
+
+.filler {
+  background: $color-white;
+  padding-left: $size-s;
+  display: inline-flex;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-position: right -114px;
+  background-size: 280px;
+  background-repeat: no-repeat;
+  align-items: center;
+  height: 100%;
+
+  ul {
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 15px;
+  }
+
+  li {
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    transition: all 1s;
+    padding: size(5) size(15);
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: size(3) solid transparent;
+    //background-color: $color-white;
+    height: 100%;
+    color: #747474;
+
+    &:hover {
+      border-bottom: size(3) solid $color-primary;
+      background-color: rgba($color-white, 0.4);
+    }
+  }
+}
+
+
+.menu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+
+  .menu-toggle-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    margin-bottom: 4px;
+  }
+
+  .navigation-menu {
+    display: none;
+  }
+
+  .navigation-menu.open {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    background: #ffffff;
+    padding: 15px;
+
+    li {
+      padding: 0 0 15px;
+    }
+  }
+
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+  }
+
+  .menu-toggle:focus {
+    outline: none;
+  }
+}
+
+.menu-item-has-children {
+  position: relative;
+
+  > a:after {
+    font-family: 'icomoon';
+    content: "\e900";
+    display: inline-flex;
+    position: relative;
+    margin-left: 10px;
+  }
+
+  &:hover {
+
+    .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+    }
+  }
+}
+
+.sub-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 270px;
+
+  li {
+    padding: 0 0 15px;
+  }
+}
+
+div .menu-item-has-children > a::after {
+  content: "⌄";
+  display: inline-flex;
+  width: 3px;
+  height: 3px;
+}

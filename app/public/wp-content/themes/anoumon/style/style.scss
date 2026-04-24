@@ -1,0 +1,239 @@
+/*
+Theme Name: Anoumon
+Theme URI: https://wordpress.org/themes/twentytwentythree
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Twenty Twenty-Three is designed to take advantage of the new design tools introduced in WordPress 6.1. With a clean, blank base as a starting point, this default theme includes ten diverse style variations created by members of the WordPress community. Whether you want to build a complex or incredibly simple website, you can do it quickly and intuitively through the bundled styles or dive into creation and full customization yourself.
+Requires at least: 6.1
+Tested up to: 6.1
+Requires PHP: 5.6
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Text Domain: anoumon
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, accessibility-ready, blog, portfolio, news
+*/
+
+@import "reset";
+@import "functions";
+
+@import "fonts";
+@import "colors";
+@import "size";
+@import "images";
+
+@import "header";
+@import "form";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  //color: 	#191970;
+  color: 	$color-tertiary;
+  font-family: 'Lato', sans-serif;
+}
+
+html {
+  background-size: 50%;
+  min-height: 100vh;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: size(25);
+  font-weight: 400;
+
+  @media only screen and (min-width: 1000px) {
+    font-size: size(62);
+  }
+}
+
+h5 {
+  font-size: size(26);
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  color: #b9afa1;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+main {
+  width: 100%;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto auto 46px;
+  grid-template-columns: auto auto auto;
+  padding: 17px 0 0 0;
+
+  @media only screen and (min-width: 1000px) {
+    grid-template-columns: auto 1170px auto;
+  }
+}
+
+header {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 15px;
+  width: 100%;
+  background-color: #fff;
+  border-image-slice: 1;
+  box-shadow: 0 10px 50px -2px rgba(0, 0, 0, 14%);
+
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+app-header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+footer {
+  background-color: #0c0c0c;
+  color: $color-white;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  a {
+    color: $color-white;
+  }
+}
+
+.content {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding: 0 30px 0;
+
+  @media only screen and (min-width: 1000px) {
+
+    padding: 0 size(30) 0;
+  }
+}
+
+.divider {
+  text-align: center;
+  font-size: size(32);
+  margin: 0 auto;
+  display: block;
+  color: #b9afa1;
+
+
+  @media only screen and (min-width: 1000px) {
+    font-size: size(34);
+  }
+}
+
+.title-divider {
+  margin-top: 30px;
+  color: #fff;
+  background-image: url("./images/bg-titles.jpg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  padding: 30px 0;
+  margin-bottom: 60px;
+}
+
+.fusion-fullwidth {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: #f9f9f9;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:#eae9e9;border-style:solid;
+}
+.fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth, .fusion-section-separator .fusion-section-separator-svg.fusion-section-separator-fullwidth {
+  width: 100%;
+}
+
+.fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth {
+  position: relative;
+}
+
+.ltr .fusion-section-separator .fusion-section-separator-spacer.fusion-section-separator-fullwidth, .ltr .fusion-section-separator .fusion-section-separator-svg.fusion-section-separator-fullwidth {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.blocks {
+  display: flex;
+  justify-items: center;
+  grid-template-columns: 100%;
+  padding: 0;
+  margin: 0;
+
+  ul {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: flex-start;
+    grid-template-columns: auto;
+    flex-direction: column;
+
+
+    @media only screen and (min-width: 1000px) {
+      display: grid;
+      justify-items: center;
+      grid-template-columns: auto auto auto auto auto ;
+    }
+
+    li {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  h6 {
+    margin-top: 15px;
+    font-weight: 400;
+  }
+
+  li {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 4px 0;
+    border: 2px solid $color-white;
+    border-right: 0;
+    font-size: 18px;
+    text-align: center;
+
+    span, svg {
+      font-size: 88px;
+      color: #b9afa1;
+
+      &:before {
+        display: grid;
+        color: #b9afa1;
+        justify-items: center;
+        align-items: end;
+      }
+    }
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+}

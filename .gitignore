@@ -1,0 +1,38 @@
+# Local WordPress/runtime secrets
+app/public/wp-config.php
+app/public/.htaccess
+app/public/*.php
+app/public/*.html
+app/public/*.txt
+
+# WordPress core and third-party
+app/public/wp-admin/
+app/public/wp-includes/
+app/public/wp-content/index.php
+app/public/wp-content/languages/
+app/public/wp-content/plugins/*
+app/public/wp-content/themes/*
+!app/public/wp-content/themes/anoumon/
+!app/public/wp-content/themes/anoumon/**
+conf/
+
+# Uploads and cache
+app/public/wp-content/uploads/
+app/public/wp-content/smush-webp/
+app/public/.htaccess.bk
+app/public/wp-content/cache/
+
+# IDE / machine-specific
+.idea/
+*.iml
+
+# Logs
+logs/
+*.log
+
+# Database / temp
+*.sql
+*.bak
+node_modules/
+*.zip
+*.phar
