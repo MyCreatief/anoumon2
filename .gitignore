@@ -21,6 +21,7 @@ app/public/wp-content/themes/*
 conf/
 
 # Uploads and cache
+app/public/wp-content/fonts/
 app/public/wp-content/uploads/
 app/public/wp-content/smush-webp/
 app/public/.htaccess.bk

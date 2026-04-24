@@ -1,0 +1,59 @@
+// Visuele verbeteringen — voorzichtige aanpassingen zonder het ontwerp te breken
+
+// Hero: zachtere meervoudige schaduw (leesbaarder op lichte foto-details)
+.featured-image .image-title {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6), 0 0 28px rgba(0, 0, 0, 0.22);
+}
+
+// Nicepage knoppen — subtiele hover-lift
+.u-btn {
+  transition: transform 0.15s ease, opacity 0.15s ease !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+}
+
+// Nicepage links (o.a. "Maak een afspraak") — iets meer gewicht
+.u-link {
+  font-weight: 500 !important;
+  transition: opacity 0.15s ease !important;
+
+  &:hover {
+    opacity: 0.72;
+    text-decoration: none !important;
+  }
+}
+
+// Footer — wat meer ruimte en leesbaarheid
+footer {
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 1.8;
+
+  a {
+    text-decoration: none;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .footer-sep {
+    opacity: 0.4;
+    margin: 0 4px;
+  }
+
+  .footer-location {
+    opacity: 0.65;
+    font-size: 13px;
+  }
+
+  .footer-copy {
+    margin-top: 6px;
+    opacity: 0.45;
+    font-size: 12px;
+  }
+}

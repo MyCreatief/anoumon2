@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <title><?php wp_title( '|', true, 'right' ); ?></title>

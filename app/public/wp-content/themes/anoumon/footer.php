@@ -26,10 +26,12 @@
 </div>
 
 <footer><div>
-
     <div class="widget-area">
-		info@anoumon.nl
+      <a href="mailto:info@anoumon.nl">info@anoumon.nl</a>
+      <span class="footer-sep"> · </span>
+      <span class="footer-location">Nederland</span>
     </div>
+    <div class="footer-copy">Copyright <?php echo date('Y'); ?> &copy; Anoumon</div>
   </div></footer>
 </main>
 </body>

@@ -6,3 +6,226 @@ Template:    flatsome
 Version:     1.0.0
 Text Domain: flatsome-child-anoumon
 */
+
+/* ============================================================
+   1. HEADER — normale hoogte gelijk aan sticky (35 → 70 px)
+   ============================================================
+   header_height is via de customizer ingesteld op 35px.
+   De sticky header gebruikt de standaard van 70px (.stuck .header-main).
+   Hieronder overschrijven we de normale header zodat ze gelijk zijn.
+   Mobiel (<850px) heeft Flatsome eigen regels; die laten we staan.
+   ============================================================ */
+
+@media (min-width: 850px) {
+    .header-main {
+        height: 70px !important;
+    }
+    #logo img {
+        max-height: 70px !important;
+    }
+}
+
+/* Voeg dezelfde box-shadow toe als de sticky-header heeft,
+   zodat de header ook zonder scrollen 'aanwezig' voelt. */
+.header-wrapper:not(.stuck) {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.10);
+}
+
+
+/* ============================================================
+   2. SERVICE-KAARTEN — gelijke padding rondom de tekst
+   ============================================================
+   [col depth="1"] genereert .col-inner.box-shadow-1.
+   Standaard padding is 15px. Verhoog naar 24px voor gelijke,
+   ruimere adembreedte aan alle kanten.
+   ============================================================ */
+
+.col-inner.box-shadow-1 {
+    padding: 24px !important;
+}
+
+
+/* ============================================================
+   3. OVERIGE VERBETERINGEN
+   ============================================================ */
+
+/* Consistente verticale ruimte tussen alle service-rijen */
+.page-id-1833 .row {
+    margin-bottom: 12px;
+}
+
+/* Rechterkolom (TIJDSDUUR / INVESTERING): centreer verticaal
+   en geef hem dezelfde hoogte als de linkerkaart, zodat de
+   labels en prijzen mooi uitlijnen met het midden van de kaart. */
+.page-id-1833 .row > [class*="col"]:last-child .col-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+
+/* ============================================================
+   4. FOOTER — volledig herontworpen (3 kolommen)
+   ============================================================
+   Zie template-parts/footer/footer.php voor de HTML.
+   Kleuren:
+     Teal hoofdkleur : #2d8a98
+     Teal donker     : #1e5a69  (copyright balk)
+     Roze accent     : #fdc3be  (primaire kleur site)
+   ============================================================ */
+
+/* Container + achtergrond */
+.footer-anoumon.footer-1 {
+    background-color: #2d8a98 !important;
+    padding: 52px 0 36px;
+}
+
+/* Grid: gelijke kolomhoogte zodat content mooi uitlijnt */
+.footer-anoumon__grid {
+    align-items: flex-start;
+}
+
+/* Gemeenschappelijke kolom-inner */
+.footer-anoumon__col .col-inner {
+    padding-right: 24px;
+}
+
+/* ── Kolom 1: Branding ─────────────────────────────── */
+.footer-logo {
+    display: block;
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    /* Logo is donker: omzetten naar wit */
+    filter: brightness(0) invert(1);
+    opacity: 0.88;
+}
+
+.footer-site-name {
+    display: block;
+    font-size: 1.9em;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.footer-tagline {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88em;
+    line-height: 1.7;
+    margin: 8px 0 20px;
+}
+
+.footer-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #fdc3be !important;
+    font-size: 0.88em;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-contact-link:hover {
+    color: #fff !important;
+}
+.footer-contact-link .icon-envelop {
+    font-size: 1.05em;
+}
+
+/* ── Kolom 2 & 3: Heading ──────────────────────────── */
+.footer-col-heading {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.72em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Quote-heading in kolom 3 heeft ander karakter */
+.footer-col-heading--quote {
+    font-size: 1.1em;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.92);
+    border-bottom: none;
+    padding-bottom: 0;
+    line-height: 1.4;
+    margin-bottom: 14px;
+}
+
+/* ── Kolom 2: Navigatielijst ───────────────────────── */
+.footer-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer-nav-links li {
+    margin-bottom: 9px;
+}
+.footer-nav-links a {
+    color: rgba(255, 255, 255, 0.70) !important;
+    font-size: 0.88em;
+    text-decoration: none;
+    transition: color 0.2s, padding-left 0.15s;
+    display: inline-block;
+}
+.footer-nav-links a:hover {
+    color: #fff !important;
+    padding-left: 4px;
+}
+.footer-nav-links .current-menu-item > a,
+.footer-nav-links .current_page_item > a {
+    color: #fff !important;
+}
+
+/* ── Kolom 3: Over-tekst & knop ────────────────────── */
+.footer-about-text {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.86em;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.footer-cta-btn {
+    background-color: rgba(255, 255, 255, 0.14) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    font-size: 0.82em;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.footer-cta-btn:hover {
+    background-color: rgba(255, 255, 255, 0.26) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ── Copyright balk ────────────────────────────────── */
+.absolute-footer {
+    background-color: #1e5a69 !important;
+}
+.absolute-footer .copyright-footer,
+.absolute-footer a {
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 0.82em;
+}
+.absolute-footer a:hover {
+    color: #fff;
+}
+
+/* ── Responsive: mobiel ────────────────────────────── */
+@media (max-width: 849px) {
+    .footer-anoumon.footer-1 {
+        padding: 36px 0 24px;
+    }
+    .footer-anoumon__col .col-inner {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    .footer-anoumon__col--brand {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+    }
+}
