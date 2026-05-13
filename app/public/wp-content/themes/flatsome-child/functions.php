@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/functions-ga4-tracking.php';
+require_once __DIR__ . '/functions-seo.php';
 
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style(
@@ -144,6 +145,35 @@ add_action( 'init', function () {
 - Vergoed door zorgverzekering? Soms gedeeltelijk via aanvullende verzekering. Verschilt per verzekeraar.
 - Hoe afspraak maken? Via contactformulier op de website of per e-mail info@anoumon.nl.
 - Kan naast reguliere zorg? Ja. Energetische therapie is complementair en vervangt geen medische behandeling.
+
+## Voor wie is Anoumon
+
+- Mensen met onverklaarbare lichamelijke klachten waarvoor reguliere zorg geen oorzaak heeft gevonden
+- Hoog Sensitieve Personen (HSP) die snel overprikkeld raken en moeilijk herstellen
+- Mensen met chronische vermoeidheid, brain fog of stress die niet weggaat
+- Mensen die oude trauma's of emotionele blokkades willen helen zonder ze opnieuw te beleven
+- Spiritueel zoekenden die toe zijn aan diepere bewustzijnsontwikkeling
+- Mensen die preventief willen onderhouden voordat klachten manifest worden
+
+## Benaderingen waarmee Anna werkt
+
+- Energetische therapie: lichaamsgericht werken aan blokkades in het energieveld
+- Bewustzijnsontwikkeling: onderzoek naar binnen, helen van oude (karmische) lading
+- Aarden, lichaamswerk, doorvoelen van emoties zonder ze opnieuw te beleven
+- Nuchtere, geaarde aanpak — geen new-age, wel diep spiritueel
+
+## Veelgestelde inhoudelijke vragen
+
+- Wat zijn vage klachten zonder medische oorzaak en wat kun je doen? Energetische blokkades uit oude (traumatische) ervaringen kunnen klachten veroorzaken die op bloedonderzoek niet zichtbaar zijn. Werk aan de blokkade lost de oorzaak op, niet alleen het symptoom.
+- Wat is brain fog (hersenmist)? Traag denken, moeilijk concentreren, woorden niet kunnen vinden. Vaak gevolg van energetische blokkades rond het voorhoofd plus chronische overprikkeling van het zenuwstelsel.
+- Hoe verloopt een sessie energetische therapie? Je ligt aangekleed op een behandeltafel. Anna werkt met haar handen iets boven of licht op je lichaam. Geen ritueel, wel diep voelbaar werk. Een sessie duurt 60 minuten.
+- Wat doet hooggevoeligheid (HSP) energetisch? Een HSP'er heeft een open energieveld dat veel uit de omgeving opvangt. Zonder regelmatig onderhoud raakt het systeem oververhit, met uitputting en concentratieproblemen als gevolg.
+- Wat als reguliere zorg geen antwoord biedt? Energetische therapie is een complementaire route die werkt op een laag onder de medische standaardtests. Geen vervanging — wel een aanvulling waar veel mensen doorbraak vinden waar bloedonderzoek niets toonde.
+- Wat is karma volgens Anna? Onverwerkte lading die je ziel door meerdere levens meedraagt. Geen straf, wel een leerroute. Je hoeft er niet in te geloven om er energetisch baat bij te hebben — wat telt is dat de oude lading mag verschuiven.
+
+## Locatie en bereikbaarheid
+
+Praktijk in Nederland. Voor wie nog nooit eerder een energetische behandeling heeft gehad is Meet & Treat (30 minuten, €35) de aanbevolen instap. Afspraken via het contactformulier op anoumon.nl of per e-mail info@anoumon.nl.
 TXT;
     exit;
 }, 1 );
