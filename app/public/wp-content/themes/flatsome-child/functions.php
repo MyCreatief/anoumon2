@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/functions-ga4-tracking.php';
+
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style(
         'flatsome-child-style',
