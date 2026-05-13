@@ -12,7 +12,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 // GEO + Open Graph locale meta
 add_action( 'wp_head', function () {
-    echo '<meta name="geo.region" content="NL" />' . "\n";
+    echo '<meta name="geo.region" content="NL-ZH" />' . "\n";
+    echo '<meta name="geo.placename" content="Gorinchem" />' . "\n";
     echo '<meta name="geo.country" content="NL" />' . "\n";
     echo '<meta property="og:locale" content="nl_NL" />' . "\n";
     echo '<meta property="og:site_name" content="Anoumon" />' . "\n";
@@ -32,9 +33,20 @@ add_action( 'wp_head', function () {
                 'email'       => 'info@anoumon.nl',
                 'priceRange'  => '€35–€338',
                 'address'     => [
-                    '@type'          => 'PostalAddress',
-                    'addressCountry' => 'NL',
-                    // TODO: vul aan: 'addressLocality', 'streetAddress', 'postalCode'
+                    '@type'           => 'PostalAddress',
+                    'addressCountry'  => 'NL',
+                    'addressRegion'   => 'Zuid-Holland',
+                    'addressLocality' => 'Gorinchem',
+                    // TODO: vul streetAddress en postalCode aan zodra praktijkadres openbaar is
+                ],
+                'areaServed'  => [
+                    [ '@type' => 'City', 'name' => 'Gorinchem' ],
+                    [ '@type' => 'City', 'name' => 'Arkel' ],
+                    [ '@type' => 'City', 'name' => 'Leerdam' ],
+                    [ '@type' => 'City', 'name' => 'Hoogblokland' ],
+                    [ '@type' => 'City', 'name' => 'Meerkerk' ],
+                    [ '@type' => 'AdministrativeArea', 'name' => 'Alblasserwaard' ],
+                    [ '@type' => 'AdministrativeArea', 'name' => 'Vijfheerenlanden' ],
                 ],
                 'hasOfferCatalog' => [
                     '@type' => 'OfferCatalog',
@@ -121,7 +133,7 @@ add_action( 'init', function () {
 
 > Complementaire therapie voor balans, herstel en innerlijke groei. Gevestigd in Nederland.
 
-Ánoumon biedt energetische therapie en begeleiding op het spirituele pad. Behandelingen richten zich op het herstellen van de energiestroom in het lichaam. Ondersteunend bij stress, vermoeidheid, slaapproblemen, emotionele blokkades en herstel na ziekte of intensieve perioden. Aanvulling op — geen vervanging van — reguliere zorg. Contact: info@anoumon.nl
+Ánoumon biedt energetische therapie en begeleiding op het spirituele pad. Praktijk in Gorinchem (Alblasserwaard / Vijfheerenlanden), bedient cliënten uit Arkel, Gorinchem, Leerdam, Hoogblokland, Meerkerk en omgeving. Behandelingen richten zich op het herstellen van de energiestroom in het lichaam. Ondersteunend bij stress, vermoeidheid, slaapproblemen, emotionele blokkades en herstel na ziekte of intensieve perioden. Aanvulling op — geen vervanging van — reguliere zorg. Contact: info@anoumon.nl
 
 ## Diensten & tarieven
 
@@ -173,7 +185,7 @@ add_action( 'init', function () {
 
 ## Locatie en bereikbaarheid
 
-Praktijk in Nederland. Voor wie nog nooit eerder een energetische behandeling heeft gehad is Meet & Treat (30 minuten, €35) de aanbevolen instap. Afspraken via het contactformulier op anoumon.nl of per e-mail info@anoumon.nl.
+Praktijk in Gorinchem, regio Alblasserwaard en Vijfheerenlanden (Zuid-Holland / Utrecht). Bedient cliënten uit Gorinchem, Arkel, Leerdam, Hoogblokland, Meerkerk en omliggende plaatsen. Voor wie nog nooit eerder een energetische behandeling heeft gehad is Meet & Treat (30 minuten, €35) de aanbevolen instap. Afspraken via het contactformulier op anoumon.nl of per e-mail info@anoumon.nl.
 TXT;
     exit;
 }, 1 );
