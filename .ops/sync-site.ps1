@@ -75,9 +75,9 @@ if ($AppUser -eq '' -or $AppPassword -eq '') {
     return
 }
 
-$bundle = Get-Content -LiteralPath $BundlePath -Raw -Encoding UTF8 | ConvertFrom-Json -AsHashtable
+$bundleRaw = Get-Content -LiteralPath $BundlePath -Raw -Encoding UTF8
 
-# SQL-statements uit bestand injecteren in de bundle
+# SQL-statements uit bestand injecteren in de bundle (PS5.1-compatibel via string-inject)
 if ($SqlFile -ne '') {
     if (-not (Test-Path -LiteralPath $SqlFile)) {
         Write-Error "SQL-bestand niet gevonden: $SqlFile"
@@ -87,11 +87,12 @@ if ($SqlFile -ne '') {
     $statements = $raw -split ';\s*\r?\n' |
         ForEach-Object { $_.Trim() } |
         Where-Object { $_ -ne '' -and -not $_.StartsWith('--') -and -not $_.StartsWith('SET NAMES') -and -not $_.StartsWith('SET SESSION') }
-    $bundle['sql_statements'] = @($statements)
+    $stmtJsonArr = ($statements | ForEach-Object { ConvertTo-Json $_ -Compress }) -join ','
+    $bundleRaw = $bundleRaw.TrimEnd().TrimEnd('}') + ',"sql_statements":[' + $stmtJsonArr + ']}'
     Write-Host "SQL-bestand: $SqlFile ($($statements.Count) statements toegevoegd aan bundle)"
 }
 
-$bundleJson = $bundle | ConvertTo-Json -Depth 20 -Compress
+$bundleJson = $bundleRaw
 $base64Cred = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${AppUser}:${AppPassword}"))
 
 if ($Apply) {
